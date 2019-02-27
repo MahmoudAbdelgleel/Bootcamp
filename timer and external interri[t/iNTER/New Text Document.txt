@@ -1,0 +1,45 @@
+/*
+ * Timer1.c
+ *
+ * Created: 2/21/2019 12:13:42 PM
+ *  Author: AVE-LAP-063
+ */ 
+#include "Timer1.h "
+void timer1_init(){
+	TCNT1H=ZERO;
+	TCNT1L=ZERO;
+	DIO_SetPinDirection(OC1B,OUTPUT);
+	DIO_SetPinDirection(OC1A,OUTPUT);
+	DIO_SetPinDirection(26,OUTPUT);
+	DIO_SetPinDirection(27,OUTPUT);
+	DIO_SetPinDirection(30,OUTPUT);
+	DIO_SetPinDirection(31,OUTPUT);
+	DIO_WritePin(26,1);
+		DIO_WritePin(27,0);
+		DIO_WritePin(30,1);
+		DIO_WritePin(31,0);
+	ICR1H =(TOP_VALUE>>8); 
+	ICR1L=TOP_VALUE;
+	OCR1AH=(COMPARE_VALUE>>8);
+	OCR1AL=COMPARE_VALUE;
+	OCR1BH=(COMPARE_VALUE1>>8);
+	OCR1BL=COMPARE_VALUE1;
+	Set_Bit(TCCR1A,COM1A0);/*inverting*/
+	Set_Bit(TCCR1A,COM1A1); /*inverting*/
+	Set_Bit(TCCR1A,WGM11); /* mode 14 */
+	Set_Bit(TCCR1B,CS11); /*  NO prescaler  */
+    Set_Bit(TCCR1B,WGM12); /* mode 14 */
+    Set_Bit(TCCR1B,WGM13); /* mode 14 */
+	Set_Bit(TCCR1A,COM1B0);/*inverting*/
+	Set_Bit(TCCR1A,COM1B1); /*inverting*/
+}
+
+void Right (){
+	
+	
+	
+	
+	
+	
+}
+
